@@ -1,0 +1,55 @@
+.container {
+    text-align: center;
+}
+.input-container {
+    margin-top: 20px;
+}
+
+.scrollable-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.header-box{
+	width:30%;
+	height:50px;
+	margin: 0 10px;
+	flex-direction: column;
+}
+
+.scrollable-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: scroll;
+    height: 450px;
+    margin: 0 10px;
+}
+
+.main-notes {
+    background-color: #81cfd1;
+    margin: 10px;
+    padding: 10px;
+}
+
+.opt-notes {
+    background-color: #80d087;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+
+.note {
+    background-color: #ccc;
+    border: 1px solid #999;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
