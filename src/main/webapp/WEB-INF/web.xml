@@ -35,20 +35,20 @@
 	  <param-value>TaskTrek</param-value>
   </context-param>
 <!--  -->
-<!--  <error-page>-->
-<!--	  <error-code>404</error-code>-->
-<!--	  <location>/AppExceptionHandler</location>-->
-<!--  </error-page>-->
+  <error-page>
+	  <error-code>404</error-code>
+	  <location>/AppExceptionHandler</location>
+  </error-page>
 
-<!--   <error-page>-->
-<!--	  <error-code>405</error-code>-->
-<!--	  <location>/AppExceptionHandler</location>-->
-<!--  </error-page>-->
+   <error-page>
+	  <error-code>405</error-code>
+	  <location>/AppExceptionHandler</location>
+  </error-page>
 
-<!--   <error-page>-->
-<!--	  <exception-type>java.lang.Throwable</exception-type>-->
-<!--	  <location>/AppExceptionHandler</location>-->
-<!--	 </error-page>-->
+   <error-page>
+	  <exception-type>java.lang.Throwable</exception-type>
+	  <location>/AppExceptionHandler</location>
+	 </error-page>
 
 <!-- 	<filter>
 		<filter-name>LogFilter</filter-name>

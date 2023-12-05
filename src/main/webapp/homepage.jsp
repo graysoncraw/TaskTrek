@@ -42,7 +42,6 @@
 	<title>TT - Homepage</title>
 	<%@ include file="WEB-INF/includes/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="HomepageStyles.css">
-
 	
 </head>
 <body>
@@ -67,23 +66,20 @@
 	           <div class="scrollable-box" id="divBox1">
 	            	<%
 	            	try {
-	            		String selectPrimaryNote = String.format("SELECT * FROM %s_primary_tab;", sessionUsername);
+	            		String selectNote = String.format("SELECT * FROM %s_notes_tab;", sessionUsername);
+	            		Connection connection = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
 	                    Class.forName("com.mysql.cj.jdbc.Driver");
 	                    Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
 	                    Statement stmt = conn.createStatement();
-	                    ResultSet rs = stmt.executeQuery(selectPrimaryNote);
-
-					   while (rs.next()) {
-						   if (rs.getString("noteText") != null) {
-							   out.print("<form action='NoteDeleteProcess' method='post'>");
-							   out.print("<input type='hidden' name='notePrimaryText' value='" + rs.getString("noteText") + "'>");
-							   out.print("<div class='note' ondblclick='editNote(\"primaryNote" + rowCount + "\")'>" +
-									   rs.getString("noteText") +
-									   "<button type='submit'>X</button></div></form>");
-							   rowCount++;
-						   }
-					   }
-				   } catch (SQLException e) {
+	                    ResultSet rs = stmt.executeQuery(selectNote);
+	                    
+	        			while(rs.next()){
+	        				if (rs.getString("primary_notes") != null){
+	            				out.print("<div class='note'>"+rs.getString("primary_notes")+"</div>");
+	        				}
+	
+	        			}
+	                } catch (SQLException e) {
 	                    e.printStackTrace();
 	        	    } catch (ClassNotFoundException e) {
 	        			// TODO Auto-generated catch block
@@ -98,22 +94,17 @@
 	            <div class="scrollable-box" id="divBox2">   
 	            	<%
 	            	try {
-						String selectSecondaryNote = String.format("SELECT * FROM %s_secondary_tab;", sessionUsername);
-						Class.forName("com.mysql.cj.jdbc.Driver");
-						Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
-						Statement stmt = conn.createStatement();
-						ResultSet rs = stmt.executeQuery(selectSecondaryNote);
-
-						while (rs.next()) {
-							if (rs.getString("noteText") != null) {
-								out.print("<form action='NoteDeleteProcess' method='post'>");
-								out.print("<input type='hidden' name='noteSecondaryText' value='" + rs.getString("noteText") + "'>");
-								out.print("<div class='note' ondblclick='editNote(\"secondaryNote" + rowCount + "\")'>" +
-										rs.getString("noteText") +
-										"<button type='submit'>X</button></div></form>");
-								rowCount++;
-							}
-						}
+	            		Connection connection = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+	                    Class.forName("com.mysql.cj.jdbc.Driver");
+	                    Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+	                    Statement stmt = conn.createStatement();
+	                    ResultSet rs = stmt.executeQuery(String.format("SELECT * FROM %s_notes_tab", sessionUsername));
+	        			
+	        			while(rs.next()){
+	        				if (rs.getString("secondary_notes") != null){
+		        				out.print("<div class='note'>"+rs.getString("secondary_notes")+"</div>");
+	        				}
+	        			}
 	                } catch (SQLException e) {
 	                    e.printStackTrace();
 	        	    } catch (ClassNotFoundException e) {

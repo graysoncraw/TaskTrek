@@ -61,15 +61,12 @@ public class SignupProcess extends HttpServlet {
 
 		else {
 			if(insertUser(name, username, email, password)) {
-				String tablePrimaryQuery = String.format("CREATE TABLE %s_primary_tab ( np_id INT AUTO_INCREMENT PRIMARY KEY, noteText TEXT, noteDate DATE, noteComplete BOOL);", username);
-				String tableSecondaryQuery = String.format("CREATE TABLE %s_secondary_tab ( ns_id INT AUTO_INCREMENT PRIMARY KEY, noteText TEXT, noteDate DATE, noteComplete BOOL);", username);
-
+				String tableQuery = String.format("CREATE TABLE %s_notes_tab ( l_id INT AUTO_INCREMENT PRIMARY KEY, primary_notes TEXT, secondary_notes TEXT);", username);
 				try {
 		            Class.forName("com.mysql.cj.jdbc.Driver");
 		            Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
 		            Statement stmt = conn.createStatement();
-		            stmt.executeUpdate(tablePrimaryQuery);
-					stmt.executeUpdate(tableSecondaryQuery);
+		            stmt.executeUpdate(tableQuery);
 		        } catch (SQLException e) {
 		            e.printStackTrace();
 		        } catch (ClassNotFoundException e) {

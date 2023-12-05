@@ -10,7 +10,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Servlet implementation class NoteAddProcess
@@ -36,17 +39,19 @@ public class NoteAddProcess extends HttpServlet {
 		String selectedBox = request.getParameter("boxSelector");
 		String note = request.getParameter("noteInput");
 		String sessionUsername = session.getAttribute("username").toString();
-		String primaryQuery = String.format("INSERT INTO %s_primary_tab (noteText) VALUES ('%s');", sessionUsername, note);
-		String secondaryQuery = String.format("INSERT INTO %s_secondary_tab (noteText) VALUES ('%s');", sessionUsername, note);
+		String primaryQuery = String.format("INSERT INTO %s_notes_tab (primary_notes) VALUES ('%s');", sessionUsername, note);
+		String secondaryQuery = String.format("INSERT INTO %s_notes_tab (secondary_notes) VALUES ('%s');", sessionUsername, note);
 		Connection conn;
 		
-		//PrintWriter out = response.getWriter();
-
+		PrintWriter out = response.getWriter();
+		//out.print("on page");
+		
 		try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+			
 	        Statement stmt = conn.createStatement();
-
+	        
 
 	        if("divBox1".equals(selectedBox) && note != "") {
 		        stmt.executeUpdate(primaryQuery);

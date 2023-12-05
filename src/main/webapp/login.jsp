@@ -6,6 +6,7 @@
 %>
 <% if (session.getAttribute("username") != null) {
 		response.sendRedirect("homepage.jsp");
+
 	}
 	else{
 		request.setAttribute("loginPage", true);

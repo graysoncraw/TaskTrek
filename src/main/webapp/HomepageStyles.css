@@ -6,24 +6,24 @@
 }
 
 .scrollable-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
 }
 
-.header-box {
-    display: inline-block;
-    width: 30%;
-    height: 50px;
-    margin: 0 10px;
+.header-box{
+	width:30%;
+	height:50px;
+	margin: 0 10px;
+	flex-direction: column;
 }
 
 .scrollable-box {
-    display: inline-block;
     border: 1px solid #ccc;
     padding: 10px;
-    overflow: auto;
-    height: 350px;
-    width: 90%;
+    overflow-y: scroll;
+    height: 450px;
     margin: 0 10px;
 }
 
@@ -39,6 +39,8 @@
     padding: 10px;
 }
 
+
+
 .note {
     background-color: #ccc;
     border: 1px solid #999;
@@ -47,7 +49,6 @@
     padding: 10px;
     overflow-y: scroll;
 }
-
 
 .submit-button {
     margin-top: 10px;
