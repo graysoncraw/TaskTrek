@@ -18,13 +18,13 @@ import java.util.regex.Pattern;
 @WebServlet("/signupprocess")
 public class SignupProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SignupProcess() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SignupProcess() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,66 +42,69 @@ public class SignupProcess extends HttpServlet {
 		boolean usernameAvailable;
 		boolean emailAvailable;
 		boolean passwordQualify;
-		
+
 		if (!isUsernameAvailable(username)) {
 			String errorMessage = "Username is already in use";
-		    req.setAttribute("usernameError", errorMessage);
-		    req.getRequestDispatcher("/login").forward(req, res);
+			req.setAttribute("usernameError", errorMessage);
+			req.getRequestDispatcher("/login").forward(req, res);
 		}
 		else if (!isEmailAvailable(email)) {
 			String errorMessage = "Email is already in use";
-		    req.setAttribute("emailError", errorMessage);
-		    req.getRequestDispatcher("/login").forward(req, res);
+			req.setAttribute("emailError", errorMessage);
+			req.getRequestDispatcher("/login").forward(req, res);
 		}
 		else if (!doesPasswordQualify(password)) {
 			String errorMessage = "Password does not qualify.<br>Must have an uppercase letter, a number, and a symbol.";
-		    req.setAttribute("passwordError", errorMessage);
-		    req.getRequestDispatcher("/login").forward(req, res);
+			req.setAttribute("passwordError", errorMessage);
+			req.getRequestDispatcher("/login").forward(req, res);
 		}
 
 		else {
 			if(insertUser(name, username, email, password)) {
-				String tableQuery = String.format("CREATE TABLE %s_notes_tab ( l_id INT AUTO_INCREMENT PRIMARY KEY, primary_notes TEXT, secondary_notes TEXT);", username);
+				String tablePrimaryQuery = String.format("CREATE TABLE %s_primary_tab ( np_id INT AUTO_INCREMENT PRIMARY KEY, noteText TEXT, noteDate DATE, noteComplete BOOL);", username);
+				String tableSecondaryQuery = String.format("CREATE TABLE %s_secondary_tab ( ns_id INT AUTO_INCREMENT PRIMARY KEY, noteText TEXT, noteDate DATE, noteComplete BOOL);", username);
+
 				try {
-		            Class.forName("com.mysql.cj.jdbc.Driver");
-		            Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
-		            Statement stmt = conn.createStatement();
-		            stmt.executeUpdate(tableQuery);
-		        } catch (SQLException e) {
-		            e.printStackTrace();
-		        } catch (ClassNotFoundException e) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+					Statement stmt = conn.createStatement();
+					stmt.executeUpdate(tablePrimaryQuery);
+					stmt.executeUpdate(tableSecondaryQuery);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-	
+
 				Cookie sessionCookie = new Cookie("sessionId", session.getId());
 				sessionCookie.setMaxAge(60 * 60 * 24 * 30); // Cookie expires in 30 days
 				res.addCookie(sessionCookie);
-	
+
 				session.setAttribute("username", username);
 				session.setAttribute("name", name);
 				session.setAttribute("email", email);
-				
+
 				res.sendRedirect(req.getContextPath() + "/homepage");
 
 			}
 		}
-			
-		
-		
+
+
+
 	}
-	
+
 	private boolean isUsernameAvailable(String username) {
 		String query = "SELECT * FROM users_tab WHERE username = '" + username + "';";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            return !rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			return !rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -110,26 +113,26 @@ public class SignupProcess extends HttpServlet {
 
 	private boolean isEmailAvailable(String email) {
 		String query = "SELECT * FROM users_tab WHERE email = '" + email + "';";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            return !rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			return !rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
+
 	private boolean doesPasswordQualify(String password) {
-        String pattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$";
-        Pattern regex = Pattern.compile(pattern);
-        Matcher matcher = regex.matcher(password);
-        return matcher.matches();
+		String pattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$";
+		Pattern regex = Pattern.compile(pattern);
+		Matcher matcher = regex.matcher(password);
+		return matcher.matches();
 	}
 
 	// Helper method to insert a new user into the database
@@ -137,26 +140,26 @@ public class SignupProcess extends HttpServlet {
 	private boolean insertUser(String name, String username, String email, String password) {
 		String query = String.format("INSERT INTO users_tab (name, username, password, email) VALUES ('%s', '%s', '%s', '%s');", name, username, password, email);
 		try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
-            Statement stmt = conn.createStatement();
-            int rowsInserted = 0;
-            if (name != "" && username != "" && email != "" && password != "") {
-                rowsInserted = stmt.executeUpdate(query);
-            }
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(DBConfig.getDbUrl(), DBConfig.getUsername(), DBConfig.getPassword());
+			Statement stmt = conn.createStatement();
+			int rowsInserted = 0;
+			if (name != "" && username != "" && email != "" && password != "") {
+				rowsInserted = stmt.executeUpdate(query);
+			}
 
-            // Check if the insertion was successful
-            if (rowsInserted > 0) {
-                // The user was successfully inserted into the database
-                return true;
-            } else {
-                // Insertion failed
-            	
-                return false;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+			// Check if the insertion was successful
+			if (rowsInserted > 0) {
+				// The user was successfully inserted into the database
+				return true;
+			} else {
+				// Insertion failed
+
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

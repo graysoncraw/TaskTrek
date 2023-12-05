@@ -1,77 +1,77 @@
 /* Apply styles to the entire page background */
 body {
-  background-color: #636f7f !important;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  font-family: Alatsi, sans-serif;
-  
+    background-color: #636f7f !important;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Alatsi, sans-serif;
+
 }
 
 /* Center the login/signup block vertically and horizontally */
 #form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Style the login/signup container */
 #userform {
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Style the tabs */
 .nav-tabs {
-  border: none;
-  font-size: 20px;
-  font-weight: 500;
-  background-color: rgba(182, 182, 182, 0.5);
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgba(182, 182, 182, 0.5);
 }
 
 .nav-tabs li.active a {
-  background-color: #fff; /* Background color for the active tab */
-  border: none;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+    background-color: #fff; /* Background color for the active tab */
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .nav-tabs li a {
-  color: #777;
+    color: #777;
 }
 
 .tab-content {
-  padding: 20px;
+    padding: 20px;
 }
 
 /* Style form elements */
 .form-group {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .form-control {
-  border-radius: 5px;
-  text-align: center;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .btn-larger {
-	background: rgb(118, 130, 148);
-	text-decoration: none;
-	color: white;
-	box-shadow: 0px 0px 0px 2px white;
-	border-radius: 3px;
-	padding: 5px 2em;
-	transition: 0.5s;
+    background: rgb(118, 130, 148);
+    text-decoration: none;
+    color: white;
+    box-shadow: 0px 0px 0px 2px white;
+    border-radius: 3px;
+    padding: 5px 2em;
+    transition: 0.5s;
 }
 .btn-larger:hover {
-	background:  rgb(152, 163, 186);
-	color: white;
-	transition: 0.5s;
+    background:  rgb(152, 163, 186);
+    color: white;
+    transition: 0.5s;
 }
 
 .error-message {
-  color: red;
+    color: red;
 }
