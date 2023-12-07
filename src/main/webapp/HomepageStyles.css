@@ -1,7 +1,8 @@
 .container {
     text-align: center;
+    background-color: #F1EDEE;
 }
-.input-container {
+.upper-container {
     margin-top: 20px;
 }
 
@@ -22,7 +23,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     overflow: auto;
-    height: 350px;
+    height: 300px;
     width: 90%;
     margin: 0 10px;
 }
@@ -39,7 +40,7 @@
     padding: 10px;
 }
 
-.note {
+.note-container{
     background-color: #ccc;
     border: 1px solid #999;
     border-radius: 10px;
@@ -49,6 +50,147 @@
 }
 
 
+/*.note {*/
+/*    background-color: #ccc;*/
+/*    border: 1px solid #999;*/
+/*    border-radius: 10px;*/
+/*    margin: 10px;*/
+/*    padding: 10px;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+
 .submit-button {
     margin-top: 10px;
+    margin-left: -5px;
 }
+
+.dropdown-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.drop-down-completed{
+    display: inline-block;
+    padding: 0px;
+    overflow: auto;
+    width: 28.4%;
+    height: 30px;
+    margin: 0 22px;
+    margin-top: -20px;
+    margin-bottom: -5px
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    display: inline-block;
+    border: 1px solid #ccc;
+    overflow: auto;
+    width: 100%;
+    height: 30px;
+}
+
+.dropdown-content{
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
+    height: 350px;
+    width: 90%;
+    margin: 0 10px;
+}
+
+.fa-calendar{
+    cursor: pointer;
+}
+
+/* Add this CSS code to your calendarPopupStyles.css file */
+
+.calendar-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 2; /* Ensure the popup is above the overlay */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 60px;
+}
+
+.calendar-popup table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-popup table, .calendar-popup th, .calendar-popup td {
+    border: 1px solid #ddd;
+}
+
+.calendar-popup th, .calendar-popup td {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar-popup th {
+    background-color: #f2f2f2;
+    padding: 24px;
+}
+
+.calendar-popup td {
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #555;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.month-year-header {
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.calendar-day-cell{
+    cursor:pointer;
+}
+
+.calendar-day-cell:hover{
+    cursor:pointer;
+    background-color: #f2f2f2;
+
+}
+
+/* Add this CSS code to your calendarPopupStyles.css file */
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for transparency */
+    z-index: 0;
+}
+
+/* Rest of your existing CSS */
+

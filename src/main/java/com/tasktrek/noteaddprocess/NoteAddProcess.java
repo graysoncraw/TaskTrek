@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Date;
 import java.io.PrintWriter;
 import java.sql.*;
 
@@ -36,8 +37,9 @@ public class NoteAddProcess extends HttpServlet {
 		String selectedBox = request.getParameter("boxSelector");
 		String note = request.getParameter("noteInput");
 		String sessionUsername = session.getAttribute("username").toString();
-		String primaryQuery = String.format("INSERT INTO %s_primary_tab (noteText) VALUES ('%s');", sessionUsername, note);
-		String secondaryQuery = String.format("INSERT INTO %s_secondary_tab (noteText) VALUES ('%s');", sessionUsername, note);
+		String currentDate = session.getAttribute("date").toString();
+		String primaryQuery = String.format("INSERT INTO %s_primary_tab (noteText, noteDate, noteComplete) VALUES ('%s', '%s', 0);", sessionUsername, note, currentDate);
+		String secondaryQuery = String.format("INSERT INTO %s_secondary_tab (noteText, noteDate, noteComplete) VALUES ('%s', '%s', 0);", sessionUsername, note, currentDate);
 		Connection conn;
 
 		//PrintWriter out = response.getWriter();

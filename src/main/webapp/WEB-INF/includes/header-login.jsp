@@ -12,7 +12,7 @@
 		  src: url('/main/webapp/fonts/HyperSuperFast.ttf');
 		}
         header {
-            background-color: #333; /* Dark background color */
+            background-color: #373E40; /* Dark background color */
             color: #fff; /* Text color */
             padding: 10px; /* Padding for the header content */
             display: flex;
@@ -51,7 +51,7 @@
 </head>
 <body>
     <header>
-        <div class="logo"><a class="reset-a" href="/TaskTrek/homepage">TaskTrek</a></div>
+        <div class="logo"><a class="reset-a" href="homepage">TaskTrek</a></div>
     </header>
 </body>
 </html>

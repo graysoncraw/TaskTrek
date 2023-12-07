@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import jakarta.servlet.*;
 import java.sql.*;
+import java.util.Date;
 
 @WebServlet("/loginprocess")
 public class loginprocess extends HttpServlet {
@@ -42,6 +43,7 @@ public class loginprocess extends HttpServlet {
 				session.setAttribute("username", rs.getString("username"));
 				session.setAttribute("name", rs.getString("name"));
 				session.setAttribute("email", rs.getString("email"));
+				session.setAttribute("date", new java.sql.Date(new Date().getTime()));
 				
 				res.sendRedirect(req.getContextPath() + "/homepage");
 			}

@@ -7,9 +7,11 @@
 <title>Fac</title>
 </head>
 <body>
-	<form action="process.jsp" method="post">
-		<h1 class='login-title'> Enter Num to Factorial</h1><br>
-           <input class="name" id="num" name="num" placeholder="Number"/><br>
+	<form action="NoteCompleteProcess" method="post">
+		<h1 class='login-title'> durp</h1><br>
+           <input class="name" id="type" name="type" placeholder="type"/><br>
+			<input class="name" id="noteText" name="noteText" placeholder="noteText"/><br>
+			<input class="name" id="status" name="status" placeholder="status"/><br>
            <input class="submit" type="submit" id="calculate-btn" value="Calculate"/><br>
 	</form>
 </body>

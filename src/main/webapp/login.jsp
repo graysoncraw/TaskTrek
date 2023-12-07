@@ -101,7 +101,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
- 		<%@ include file="WEB-INF/includes/footer.jsp" %>
+ 		<%@ include file="WEB-INF/includes/footer-login.jsp" %>
  	</body>
  	<% } %>
 </html>

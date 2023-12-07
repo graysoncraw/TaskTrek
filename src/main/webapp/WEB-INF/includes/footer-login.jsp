@@ -17,7 +17,7 @@
 
         /* Main content wrapper (excluding footer) */
         .content {
-            background-color: #F1EDEE;
+            background-color: #636f7f;
             flex-grow: 1; /* Allow content to grow to fill available space */
             padding: 20px; /* Padding for the content area */
         }
