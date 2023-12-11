@@ -32,7 +32,6 @@
         /* Style for the footer links */
         .footer-link {
             color: #fff; /* Text color for links */
-            text-decoration: none; /* Remove underlines from links */
             margin: 0 10px; /* Add spacing between links */
         }
 
@@ -47,9 +46,7 @@
     </div>
     <footer>
         <div>
-            <a href="#" class="footer-link">Privacy Policy</a>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <a href="#" class="footer-link">Contact Us</a>
+            <p class="footer-link">1 Corinthians 14:40 - But all things should be done decently and in order.</p>
         </div>
         <div>&copy; 2023 TaskTrek</div>
     </footer>

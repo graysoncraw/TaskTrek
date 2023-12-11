@@ -46,7 +46,6 @@
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
-    overflow-y: scroll;
 }
 
 
@@ -88,10 +87,17 @@
 
 .dropbtn {
     display: inline-block;
+    background-color: #777777; /* Red background color for the button */
+    color: #fff; /* Text color for the button */
     border: 1px solid #ccc;
     overflow: auto;
     width: 100%;
     height: 30px;
+    cursor:pointer;
+}
+
+.dropbtn:hover{
+    background-color: #555;
 }
 
 .dropdown-content{
@@ -107,8 +113,6 @@
 .fa-calendar{
     cursor: pointer;
 }
-
-/* Add this CSS code to your calendarPopupStyles.css file */
 
 .calendar-popup {
     display: none;
@@ -179,8 +183,6 @@
 
 }
 
-/* Add this CSS code to your calendarPopupStyles.css file */
-
 .overlay {
     display: none;
     position: fixed;
@@ -192,5 +194,13 @@
     z-index: 0;
 }
 
-/* Rest of your existing CSS */
+.delete-btn{
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+.delete-btn:hover{
+    color: red;
+}
 

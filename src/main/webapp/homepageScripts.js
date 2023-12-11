@@ -5,7 +5,7 @@ $(document).on("dblclick", ".note", function(){
     var rowCount = $(this).attr('data-row-count');
     var type = $(this).attr('noteType');
 
-    $(this).html('<textarea class="form-control" style="text-align: center;" id="newcont' + rowCount + '" rows="1">'+current+'</textarea>');
+    $(this).html('<textarea class="form-control" style="text-align: center;" id="newcont' + rowCount + '" rows="2">'+current+'</textarea>');
     $("#newcont" + rowCount).focus();
     console.log("#newcont" + rowCount);
     console.log("#note" + rowCount + " .note-content");
@@ -202,7 +202,7 @@ function generateCalendarTable(initialDate) {
                         // Send an AJAX request to update the session on the server
                         $.ajax({
                             type: 'POST',
-                            url: 'UpdateDateProcess', // Replace with the actual URL of your servlet or controller
+                            url: 'UpdateDateProcess',
                             data: { newDate: clickedDate },
                             success: function (response) {
                                 console.log('Session date updated successfully');

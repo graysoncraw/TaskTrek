@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="jakarta.servlet.*"  %>
 <%@ page import="java.io.*"  %>
 <%@ page import="jakarta.servlet.http.*"  %>
@@ -14,7 +13,10 @@
 
 <%
     HttpSession sesh = request.getSession();
-    String sessionUsername = sesh.getAttribute("username").toString();
+    String sessionUsername = "";
+    if (session.getAttribute("username") != null){
+        sessionUsername = sesh.getAttribute("username").toString();
+    }
 %>
 
 <html>
@@ -28,17 +30,17 @@
             src: url('/main/webapp/fonts/HyperSuperFast.ttf');
         }
         header {
-            background-color: #373E40; /* Dark background color */
-            color: #fff; /* Text color */
-            padding: 10px; /* Padding for the header content */
+            background-color: #373E40;
+            color: #fff;
+            padding: 10px;
             display: flex;
-            justify-content: space-between; /* Align items to the start and end of the header */
+            justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 40px; /* Font size for the logo */
-            font-weight: bold; /* Bold text */
+            font-size: 40px;
+            font-weight: bold;
             font-family: "Audiowide", sans-serif;
         }
 
@@ -47,12 +49,14 @@
         }
 
         .logout-button {
-            background-color: #f00; /* Red background color for the button */
-            color: #fff; /* Text color for the button */
-            padding: 5px 10px; /* Padding for the button */
-            text-decoration: none; /* Remove underlines from the button text */
-            border: none; /* Remove borders */
-            border-radius: 5px; /* Rounded corners for the button */
+            background-color: #777777;
+            color: #fff;
+            border-radius: 2px;
+            border: solid #ccc;
+            padding: 12px 28px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
@@ -85,7 +89,8 @@
         }
 
         .logout-button:hover {
-            background-color: #d00; /* Darker red on hover */
+            background-color: #555;
+
         }
 
         .reset-a, .reset-a:hover, .reset-a:visited, .reset-a:focus, .reset-a:active  {
@@ -100,11 +105,11 @@
 <header>
     <div class="logo"><a class="reset-a" href="homepage">TaskTrek</a></div>
     <div class="logout-container">
-            <button class="logout-button" type="submit">Welcome, <%= sessionName %></button>
+        <button class="logout-button" type="submit">Welcome, <%= sessionName %></button>
         <form action='logout' method='post' id='logout-form'>
-        <div class="logout-dropdown">
-            <a href="#" onclick="submitForm()">Logout</a>
-        </div>
+            <div class="logout-dropdown">
+                <a href="#" onclick="submitForm()">Logout</a>
+            </div>
         </form>
     </div>
 

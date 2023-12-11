@@ -48,11 +48,9 @@ public class loginprocess extends HttpServlet {
 				res.sendRedirect(req.getContextPath() + "/homepage");
 			}
 			else {
-			    String errorMessage = "Incorrect username or password";
-				out.println("error");
+			    String errorMessage = "<p class='text-danger'>Incorrect username or password</p>";
 			    req.setAttribute("loginError", errorMessage);
 			    req.getRequestDispatcher("/login").forward(req, res);
-		       
 			}
 			rs.close();
 			stmt.close();

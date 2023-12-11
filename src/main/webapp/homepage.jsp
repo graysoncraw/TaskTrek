@@ -95,13 +95,13 @@
 								if (noteCheck.equals("1")){
 									check = "checked='checked'";
 								}
-								out.print("<form action='NoteDeleteProcess' method='post'>");
+								out.print("<form name='myform' action='NoteDeleteProcess' method='post'>");
 								out.print("<input type='hidden' name='notePrimaryText' value='" + rs.getString("noteText") + "'>");
 								out.print("<div class='note-container'>");
 								out.print("<input type='checkbox' class='noteCheck' id='note" + rowPrimaryCount + "' noteCheckType='primary'" + check + ">");
 								out.print("<div class='note' id='note" + rowPrimaryCount + "' data-row-count='" + rowPrimaryCount + "'" + "' noteType=primary>" +
 										"<div class='note-content'>" + rs.getString("noteText") + "</div></div>");
-								out.print("<button type='submit'>X</button>");
+								out.print("<span class='delete-btn' onclick='myform.submit()'>X</span>");
 								out.print("</div></form>");
 								rowPrimaryCount++;
 							}
@@ -141,7 +141,7 @@
 								out.print("<input type='checkbox' class='noteCheck' id='note" + rowSecondaryCount + "' noteCheckType='secondary'" + check + ">");
 								out.print("<div class='note' id='note" + rowSecondaryCount + "' data-row-count='" + rowSecondaryCount + "'" + "' noteType=secondary>" +
 										"<div class='note-content'>" + rs.getString("noteText") + "</div></div>");
-								out.print("<button type='submit'>X</button>");
+								out.print("<span class='delete-btn' onclick='myform.submit()'>X</span>");
 								out.print("</div></form>");
 								rowSecondaryCount++;
 							}
@@ -190,7 +190,7 @@
 								out.print("<input type='checkbox' class='noteCheck' id='note" + rowPrimaryCount + "' noteCheckType='primary'" + check + ">");
 								out.print("<div class='note' id='note" + rowPrimaryCount + "' data-row-count='" + rowPrimaryCount + "'" + "' noteType=primary>" +
 										"<div class='note-content'" + linethru + ">" + rs.getString("noteText") + "</div></div>");
-								out.print("<button type='submit'>X</button>");
+								out.print("<span class='delete-btn' onclick='myform.submit()'>X</span>");
 								out.print("</div></form>");
 								rowPrimaryCount++;
 							}
@@ -230,7 +230,7 @@
 								out.print("<input type='checkbox' class='noteCheck' id='note" + rowSecondaryCount + "' noteCheckType='secondary'" + check + ">");
 								out.print("<div class='note' id='note" + rowSecondaryCount + "' data-row-count='" + rowSecondaryCount + "'" + "' noteType=secondary>" +
 										"<div class='note-content'" + linethru + ">" + rs.getString("noteText") + "</div></div>");
-								out.print("<button type='submit'>X</button>");
+								out.print("<span class='delete-btn' onclick='myform.submit()'>X</span>");
 								out.print("</div></form>");
 								rowSecondaryCount++;
 							}

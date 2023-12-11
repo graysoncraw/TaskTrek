@@ -44,17 +44,17 @@ public class SignupProcess extends HttpServlet {
 		boolean passwordQualify;
 
 		if (!isUsernameAvailable(username)) {
-			String errorMessage = "Username is already in use";
+			String errorMessage = "<p class='text-danger'>Username is already in use</p>";
 			req.setAttribute("usernameError", errorMessage);
 			req.getRequestDispatcher("/login").forward(req, res);
 		}
 		else if (!isEmailAvailable(email)) {
-			String errorMessage = "Email is already in use";
+			String errorMessage = "<p class='text-danger'>Email is already in use</p>";
 			req.setAttribute("emailError", errorMessage);
 			req.getRequestDispatcher("/login").forward(req, res);
 		}
 		else if (!doesPasswordQualify(password)) {
-			String errorMessage = "Password does not qualify.<br>Must have an uppercase letter, a number, and a symbol.";
+			String errorMessage = "<p class='text-danger'>Password does not qualify<br>Must have an uppercase letter, a number, and a symbol</p>";
 			req.setAttribute("passwordError", errorMessage);
 			req.getRequestDispatcher("/login").forward(req, res);
 		}
@@ -84,6 +84,7 @@ public class SignupProcess extends HttpServlet {
 				session.setAttribute("username", username);
 				session.setAttribute("name", name);
 				session.setAttribute("email", email);
+				session.setAttribute("date", new java.sql.Date(new java.util.Date().getTime()));
 
 				res.sendRedirect(req.getContextPath() + "/homepage");
 

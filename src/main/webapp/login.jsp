@@ -46,10 +46,12 @@
 						Login
 						</button>
 					  </div>
-					  <div id="loginError" class="error-message">
-					    <c:if test="${not empty request.loginError}">
-					        <p class="text-danger">${request.loginError}</p>
-					    </c:if>
+					  <div id="loginError" class="error-message"><br>
+					    <%
+							if (request.getAttribute("loginError") != null) {
+								out.println(request.getAttribute("loginError"));
+							}
+						%>
 					</div>
 					</form>
 				  </div>
@@ -77,18 +79,30 @@
 						Sign up
 						</button>
 					</div>
-					<div id="signupError" class="error-message">
-						<c:choose>
-						    <c:when test="${not empty request.usernameError}">
-						        <p class="text-danger">${request.usernameError}</p>
-						    </c:when>
-						    <c:when test="${not empty request.emailError}">
-						        <p class="text-danger">${request.emailError}</p>
-						    </c:when>
-						    <c:when test="${not empty request.passwordError}">
-						        <p class="text-danger">${request.passwordError}</p>
-						    </c:when>
-						</c:choose>
+					<div id="signupError" class="error-message"><br>
+<%--						<c:choose>--%>
+<%--						    <c:when test="${not empty request.usernameError}">--%>
+<%--						        <p class="text-danger">${request.usernameError}</p>--%>
+<%--						    </c:when>--%>
+<%--						    <c:when test="${not empty request.emailError}">--%>
+<%--						        <p class="text-danger">${request.emailError}</p>--%>
+<%--						    </c:when>--%>
+<%--						    <c:when test="${not empty request.passwordError}">--%>
+<%--						        <p class="text-danger">${request.passwordError}</p>--%>
+<%--						    </c:when>--%>
+<%--						</c:choose>--%>
+
+						<%
+							if (request.getAttribute("usernameError") != null) {
+								out.println(request.getAttribute("usernameError"));
+							}
+							else if (request.getAttribute("emailError") != null) {
+								out.println(request.getAttribute("emailError"));
+							}
+							else if (request.getAttribute("passwordError") != null) {
+								out.println(request.getAttribute("passwordError"));
+							}
+						%>
 					</div>
 					</form>
 				</div>

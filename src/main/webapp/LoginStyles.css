@@ -1,14 +1,11 @@
-/* Apply styles to the entire page background */
 body {
     background-color: #636f7f !important;
     margin: 0;
     padding: 0;
     height: 100vh;
     font-family: Alatsi, sans-serif;
-
 }
 
-/* Center the login/signup block vertically and horizontally */
 #form {
     display: flex;
     justify-content: center;
@@ -16,15 +13,13 @@ body {
     height: 100vh;
 }
 
-/* Style the login/signup container */
 #userform {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Style the tabs */
 .nav-tabs {
     border: none;
     font-size: 20px;
@@ -33,7 +28,7 @@ body {
 }
 
 .nav-tabs li.active a {
-    background-color: #fff; /* Background color for the active tab */
+    background-color: #fff;
     border: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -47,7 +42,6 @@ body {
     padding: 20px;
 }
 
-/* Style form elements */
 .form-group {
     margin-bottom: 15px;
 }
@@ -66,6 +60,7 @@ body {
     padding: 5px 2em;
     transition: 0.5s;
 }
+
 .btn-larger:hover {
     background:  rgb(152, 163, 186);
     color: white;
@@ -74,4 +69,5 @@ body {
 
 .error-message {
     color: red;
+    text-align: center;
 }
